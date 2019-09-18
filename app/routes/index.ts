@@ -35,6 +35,10 @@ export class Routes {
         app.route('/api/addEmp')
         .post(this.employeeController.addEmp)
 
+        // Login 
+        app.route('/api/Login')
+        .post(this.employeeController.login)
+
         
 
 

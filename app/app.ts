@@ -1,8 +1,9 @@
 import express from "express";
 import { Routes } from './routes';
 import bodyParser from "body-parser";
-import mongoose from 'mongoose';
+import mongoClient from 'mongodb';
 
+let url = 'mongodb://localhost/emp';
 
 class App {
 public app: express.Application;
@@ -14,6 +15,7 @@ constructor() {
     this.routePrv.routes(this.app);
     this.mongoSetup();
 }
+
 
 private config():void {
     
@@ -29,13 +31,10 @@ private config():void {
 }
 
     private mongoSetup(): void {
-        mongoose.connect('mongodb://localhost/emp',{useNewUrlParser: true,useUnifiedTopology: true})
-      .then(() => console.log('connection successful'))
+        mongoClient.connect(url,{useNewUrlParser: true,useUnifiedTopology: true})
+      .then(() => console.log('connected successful'))
       .catch((err) => console.error(err));
     }   
-
-
-
 
 }
 export default new App().app;

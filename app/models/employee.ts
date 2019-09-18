@@ -12,7 +12,6 @@ export const EmployeeSchema = new Schema({
       {
           type: Types.ObjectId,
           ref: "Comment"
-
       } 
   ]    
 });

@@ -2,6 +2,7 @@
 import { EmployeeSchema } from '../models/employee';
 import { Request ,Response } from 'express';
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
 
 let EmployeeModel = mongoose.model('users',EmployeeSchema);
 
@@ -15,7 +16,6 @@ export class employeeController {
             }
             res.json(data);
         });
-
     }
 
     public getEmp(req : Request , res : Response) {
@@ -74,20 +74,49 @@ export class employeeController {
        })        
     }
 
-    public addEmp(req : Request , res : Response) {
-        let Newuser = new EmployeeModel(req.body);
-        //let Newuser1 = new EmployeeModel(req.body);
-        //let Newuser2 = new EmployeeModel(req.body);
+     public addEmp(req : Request , res : Response) {
+    //     let Newuser = new EmployeeModel(req.body);
+    //     let Newuser1 = new EmployeeModel(req.body);
+    //     let Newuser2 = new EmployeeModel(req.body);
 
-        console.log(Newuser);
+    //     //console.log(req.body.name,req.body.name);
           
-        EmployeeModel.create([Newuser],(err,data) => {
-            if(err){
-                console.log(err);
-                res.send(err);
-            } 
-            res.json(data);
-        })
+    //     EmployeeModel.create(["yas","yaa"],(err,data) => {
+    //         if(err){
+    //             console.log(err);
+    //             res.send(err);
+    //         } 
+    //         res.json(data);
+    //     })
+     }
+
+    public login(req : Request,res:Response) {
+
+        // EmployeeModel.find({name:"Yash"},(err,data) => {
+        //     if(err){
+        //     console.log(err);
+        //     res.send(err);
+        //     } else {
+            
+        //     const data = JSON.stringify("Yash") ;
+        //     jwt.sign({data},'secretkey', (err: any,token:any) => {
+        //       if(err) {
+        //           throw err ;
+        //       }
+        //       res.json({  
+        //         success: true,
+        //         message:'Login successful!',  
+        //         token
+        //      })
+
+              
+
+        //     } 
+            
+
+        //     res.json(data);
+        // });
+
     }
 
     
